@@ -1,0 +1,1579 @@
+{
+  "ABS": {
+    "syntax": "ABS(x)",
+    "summary": "The absolute value of the numeric argument x.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B6",
+    "details": "The result is of type real."
+  },
+  "AND": {
+    "syntax": "operand AND operand",
+    "summary": "Performs a bit-wise logical AND operation on two 16-bit values.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$AF",
+    "details": "The result is of type integer."
+  },
+  "APPEND": {
+    "syntax": "APPEND# channel, filename [,D drive] [,U unit]",
+    "summary": "Opens an existing file of type SEQ or USR for writing, and positions the write pointer at the end of the file.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0E",
+    "details": "APPEND# works similarly to DOPEN#..."
+  },
+  "ASC": {
+    "syntax": "ASC(string)",
+    "summary": "The PETSCII code of the first character of the string argument, as a number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C6",
+    "details": "ASC returns zero for empty strings."
+  },
+  "ATN": {
+    "syntax": "ATN(numeric expression)",
+    "summary": "The arc tangent of the argument.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C1",
+    "details": "A multiplication of the result with 180/π converts the value to the unit ”degrees”."
+  },
+  "AUTO": {
+    "syntax": "AUTO [step]",
+    "summary": "Enables or disables automatic line numbering during BASIC program en- RETURN try.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DC"
+  },
+  "BACKGROUND": {
+    "syntax": "BACKGROUND colour",
+    "summary": "Sets the background colour of the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $3B"
+  },
+  "BACKUP": {
+    "syntax": "BACKUP U source TO U target\nBACKUP D source TO D target [,U unit]",
+    "summary": "Copies one disk to another.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F6",
+    "details": "The target disk will be formatted and an identical copy of the source disk will be written."
+  },
+  "BANK": {
+    "syntax": "BANK bank number",
+    "summary": "Selects the memory configuration for BASIC commands that use 16-bit addresses.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $02",
+    "details": "A value > 127 selects memory mapped I/O."
+  },
+  "BEGIN": {
+    "syntax": "BEGIN ... BEND",
+    "summary": "The beginning of a compound statement to be executed after THEN or ELSE.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $18",
+    "details": "Do not jump with GOTO or GOSUB into a compound statement, as it may lead to unexpected results."
+  },
+  "BEND": {
+    "syntax": "BEGIN ... BEND",
+    "summary": "The end of a compound statement to be executed after THEN or ELSE.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $19",
+    "details": "The example below shows a quirk in the implementation of the compound statement."
+  },
+  "BLOAD": {
+    "syntax": "BLOAD filename [,B bank] [,P address] [,R] [,D drive] [,U unit]",
+    "summary": "Loads a file of type PRG into RAM at address ,P.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $11",
+    "details": "BLOAD cannot cross bank boundaries."
+  },
+  "BOOT": {
+    "syntax": "BOOT filename [,B bank][,P address] [,D drive] [,U unit]\nBOOT SYS\nBOOT",
+    "summary": "Loads and runs a program or boot sector from a disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1B"
+  },
+  "BORDER": {
+    "syntax": "BORDER colour",
+    "summary": "Sets the border colour of the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $3C"
+  },
+  "BOX": {
+    "syntax": "BOX x0,y0, x2,y2 [, solid]\nBOX x0,y0, x1,y1, x2,y2, x3,y3 [, solid]",
+    "summary": "Bitmap graphics: draws a box.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E1",
+    "details": "BOX can be used with four coordinate pairs to draw any shape that can be defined with four points, not only rectangles."
+  },
+  "BSAVE": {
+    "syntax": "BSAVE filename, P start TO P end [,B bank] [,R] [,D drive] [,U unit]",
+    "summary": "Saves a memory range to a file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $10",
+    "details": "The length of the file is end - start + 2."
+  },
+  "BUMP": {
+    "syntax": "BUMP(type)",
+    "summary": "A bitfield of sprites currently colliding with other sprites or screen data.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $03",
+    "details": "It’s possible to detect multiple collisions, but you will need to evaluate the sprite coordinates to detect which sprites have collided."
+  },
+  "BVERIFY": {
+    "syntax": "BVERIFY filename [,P address] [,B bank] [,D drive] [,U unit]",
+    "summary": "Compares a memory range to a file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $28",
+    "details": "BVERIFY can only test for equality."
+  },
+  "C@&": {
+    "syntax": "C@&(column, row)",
+    "summary": "Reads or sets the colour code of a character at given screen coordinates.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "C@& is a reserved system variable."
+  },
+  "CATALOG": {
+    "syntax": "CATALOG [filepattern] [,W] [,R] [,D drive] [,U unit]\n$ [filepattern] [,W] [,R] [,D drive] [,U unit]",
+    "summary": "Prints a file catalog/directory of the specified disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0C",
+    "details": "CATALOG is a synonym of DIRECTORY and DIR, and produces the same listing."
+  },
+  "CHANGE": {
+    "syntax": "CHANGE /findstring/ TO /replacestring/ [, line range]\nCHANGE ”findstring” TO ”replacestring” [, line range]",
+    "summary": "Edits the BASIC program currently in memory to replace all instances of one string with another.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2C",
+    "details": "Almost any character that is not part of the string, including letters and punctuation, can be used instead of /."
+  },
+  "CHAR": {
+    "syntax": "CHAR column, row, height, width, direction, string [, address of character\nset]",
+    "summary": "Bitmap graphics: displays text on a graphic screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E0",
+    "details": "Notice the start position of the string has different units in the horizontal and vertical directions."
+  },
+  "CHARDEF": {
+    "syntax": "CHARDEF index, bit-matrix",
+    "summary": "Changes the appearance of a character.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E0 $96",
+    "details": "The character bitmap changes are applied to the VIC character set buffer, which resides in RAM at the address FF7.E000."
+  },
+  "CHDIR": {
+    "syntax": "CHDIR dirname [,U unit]",
+    "summary": "Changes the current working directory.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $4B"
+  },
+  "CHR$": {
+    "syntax": "CHR$(numeric expression)",
+    "summary": "A string containing one character of the given PETSCII value.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C7",
+    "details": "The argument range is from 0 – 255, so this function may also be used to insert control codes into strings."
+  },
+  "CIRCLE": {
+    "syntax": "CIRCLE xc, yc, radius [, flags, start, stop]",
+    "summary": "Bitmap graphics: draws a circle.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E2",
+    "details": "CIRCLE is used to draw circles on screens with an aspect ratio of 1:1 (for example: 320 x 200 or 640 x 400)."
+  },
+  "CLOSE": {
+    "syntax": "CLOSE channel",
+    "summary": "Closes an input or output channel.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A0",
+    "details": "Closing files that have previously been opened before a program has completed is very important, especially for output files."
+  },
+  "CLR": {
+    "syntax": "CLR\nCLR variable",
+    "summary": "Clears BASIC variable memory.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9C",
+    "details": "CLR should not be used inside loops or subroutines, as it destroys the return address."
+  },
+  "CLRBIT": {
+    "syntax": "CLRBIT address, bit number",
+    "summary": "Clears (resets) a single bit at the address.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9C $FE $4E",
+    "details": "CLRBIT is a short version of using a bitwise AND to clear a bit, but you can only clear one bit at a time."
+  },
+  "CMD": {
+    "syntax": "CMD channel [, string]",
+    "summary": "Redirects the standard output from screen to a channel.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9D",
+    "details": "The CMD mode is stopped with PRINT#, or by closing the channel with CLOSE."
+  },
+  "COLLECT": {
+    "syntax": "COLLECT [,D drive] [,U unit]",
+    "summary": "Rebuilds the Block Availability Map (BAM) of a disk, deleting splat files (files which have been opened, but not properly closed) and marking unused blocks as free.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F3",
+    "details": "While this command is useful for cleaning a disk from splat files, it is dangerous for disks with boot blocks or random access files."
+  },
+  "COLLISION": {
+    "syntax": "COLLISION type [, line number]",
+    "summary": "Enables or disables a user-programmed interrupt handler for sprite collision.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $17",
+    "details": "It is possible to enable the interrupt handler for all types, but only one can execute at any time."
+  },
+  "COLOR": {
+    "syntax": "COLOR colour",
+    "summary": "Sets the foreground text colour for subsequent PRINT commands.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E7",
+    "details": "This is another name for FOREGROUND."
+  },
+  "CONCAT": {
+    "syntax": "CONCAT appendfile [,D drive] TO targetfile [,D drive] [,U unit]",
+    "summary": "Appends (concatenates) the contents of the appendfile to the targetfile.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $13",
+    "details": "CONCAT is executed in the DOS of the disk drive."
+  },
+  "CONT": {
+    "syntax": "CONT",
+    "summary": "Resumes program execution after a break or stop caused by an END or RUN STOP statement, or by pressing STOP .",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9A",
+    "details": "CONT cannot be used if a program has stopped because of an error."
+  },
+  "COPY": {
+    "syntax": "COPY source [,D drive] [,U unit] TO [target] [,D drive] [,U unit]",
+    "summary": "Copies a file to another file, or one or more files from one disk to another.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F4",
+    "details": "The file types PRG, SEQ and USR can be copied."
+  },
+  "COS": {
+    "syntax": "COS(radians expression)\nCOSD(degrees expression)",
+    "summary": "The cosine of an angle.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BE"
+  },
+  "CURSOR": {
+    "syntax": "CURSOR <ON | OFF> [{, column, row, style}]\nCURSOR column, row",
+    "summary": "Moves the text cursor to the specified position on the current text screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $41",
+    "details": "When the cursor in ”on,” moving the cursor with PRINT may cause display artifacts where the cursor-on character remains when a PETSCII code relocates the cursor."
+  },
+  "CUT": {
+    "syntax": "CUT x, y, width, height",
+    "summary": "Bitmap graphics: copies the content of the specified rectangle with upper left position x, y and the width and height to a buffer, and fills the region afterwards with the colour of the currently selected pen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E4",
+    "details": "The size of the rectangle is limited by the 1KB size of the buffer."
+  },
+  "DATA": {
+    "syntax": "DATA [constant [, constant ...]]",
+    "summary": "Defines constants which can be read by READ statements in a program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$83",
+    "details": "It is good programming practice to put large amounts of DATA statements at the end of the program, so they don’t slow down the search for line numbers after GOTO, and other statements with line number targets."
+  },
+  "DCLEAR": {
+    "syntax": "DCLEAR [,D drive] [,U unit]",
+    "summary": "Sends an initialise command to the specified unit and drive.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $15"
+  },
+  "DCLOSE": {
+    "syntax": "DCLOSE [U unit]\nDCLOSE# channel",
+    "summary": "Closes a single file or all files for the specified unit.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0F",
+    "details": "It is important to close all open files before a program ends."
+  },
+  "DEC": {
+    "syntax": "DEC(string expression)",
+    "summary": "The decimal value of a hexadecimal string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D1",
+    "details": "Allowed digits in uppercase/graphics mode are 0 – 9 and A – F (0123456789ABCDEF) and in lowercase/uppercase mode are 0 – 9 and a – f (0123456789abcdef)."
+  },
+  "DECBIN": {
+    "syntax": "DECBIN(string expression)",
+    "summary": "The decimal value of a binary string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $11",
+    "details": "DECBIN ignores everything after the first non-binary digit or the 32nd character."
+  },
+  "DEF FN": {
+    "syntax": "DEF FN name(real variable) = [expression]",
+    "summary": "Defines a single statement user function with one argument of type real, that returns a real value when evaluated.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$96 (DEF) $A5 (FN)",
+    "details": "The function argument is not a real variable and will not overwrite a variable with that name."
+  },
+  "DELETE": {
+    "syntax": "DELETE [line range]\nDELETE filename [,D drive] [,U unit] [,R]",
+    "summary": "The first form deletes a range of lines from the BASIC program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F7",
+    "details": "DELETE is a synonym of SCRATCH and ERASE."
+  },
+  "DIM": {
+    "syntax": "DIM name(limits) [, name(limits) ...]",
+    "summary": "Declares the shape, bounds and the type of a BASIC array.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$86",
+    "details": "Byte arrays consume one byte per element, integer arrays two bytes, real arrays five bytes and string arrays three bytes for the string descriptor plus the length of the string itself."
+  },
+  "DIR": {
+    "syntax": "DIR [filepattern] [,W] [,P] [,R] [,D drive] [,U unit]\nDIRECTORY [filepattern] [,W] [,P] [,R] [,D drive] [,U unit]\n$ [filepattern] [,W] [,R] [,D drive] [,U unit]\nDIR [filepattern] ,U12 [,P]",
+    "summary": "Prints a file directory/catalog of the specified disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$EE (DIR) $FE $29 (ECTORY)"
+  },
+  "DISK": {
+    "syntax": "DISK command [,U unit]\n@ command [,U unit]",
+    "summary": "Sends a command string to the specified disk unit.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $40",
+    "details": "The command string is interpreted by the disk unit and must be compatible to the used DOS version."
+  },
+  "DLOAD": {
+    "syntax": "DLOAD filename [,D drive] [,U unit]\nDLOAD ”$[pattern=type]” [,D drive] [,U unit]\nDLOAD ”$$[pattern=type]” [,D drive] [,U unit]",
+    "summary": "The first form loads a file of type PRG into memory reserved for BASIC programs.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F0",
+    "details": "The load address that is stored in the first two bytes of the PRG file is ignored."
+  },
+  "DMA": {
+    "syntax": "DMA command [, length, source address, source bank, target address,\ntarget bank[, sub]]",
+    "summary": "DMA (”Direct Memory Access”) is obsolete, and has been replaced by EDMA.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1F",
+    "details": "DMA has access to the lower 1MB address range organised in 16 banks of 64KB."
+  },
+  "DMODE": {
+    "syntax": "DMODE jam, complement, stencil, style, thick",
+    "summary": "Bitmap graphics: sets “display mode” parameters of the graphics context, used by drawing commands.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $35",
+    "details": "The stencil and thick parameters are not implemented and have no effect."
+  },
+  "DO": {
+    "syntax": "DO ... LOOP\nDO [<UNTIL | WHILE> logical expression] ... statements [EXIT]\nLOOP [<UNTIL | WHILE> logical expression]",
+    "summary": "DO define the start of a BASIC loop.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$EB",
+    "details": "DO loops may be nested."
+  },
+  "DOPEN": {
+    "syntax": "DOPEN# channel, filename>,L [reclen]] [,W] [,D drive] [,U unit]",
+    "summary": "Opens a file for reading or writing.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0D",
+    "details": "DOPEN# may be used to open all file types."
+  },
+  "DOT": {
+    "syntax": "DOT x, y [,colour]",
+    "summary": "Bitmap graphics: draws a pixel at screen coordinates (x, y).",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $4C"
+  },
+  "DPAT": {
+    "syntax": "DPAT type [, number, pattern ...]",
+    "summary": "Bitmap graphics: sets the drawing pattern of the graphics context for drawing commands.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $36",
+    "details": "To use the draw pattern, use DMODE to set the style mode to 1."
+  },
+  "DS": {
+    "syntax": "DS",
+    "summary": "The status of the last disk operation.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "DS is a reserved system variable."
+  },
+  "DS$": {
+    "syntax": "DS$",
+    "summary": "The status of the last disk operation in text form of the format \"<code>,<message>,<track>,<sector>”.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "DS$ is a reserved system variable."
+  },
+  "DSAVE": {
+    "syntax": "DSAVE filename [,D drive] [,U unit]",
+    "summary": "Saves the BASIC program in memory to a file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$EF",
+    "details": "DVERIFY can be used after DSAVE to check if the saved program on disk is identical to the program in memory."
+  },
+  "DT$": {
+    "syntax": "DT$",
+    "summary": "The current date, as a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "DT$ is a reserved system variable."
+  },
+  "DVERIFY": {
+    "syntax": "DVERIFY filename [,D drive] [,U unit]",
+    "summary": "Verifies that the BASIC program in memory is equivalent to a file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $14",
+    "details": "DVERIFY can only test for equality."
+  },
+  "EDIT": {
+    "syntax": "EDIT <ON | OFF>",
+    "summary": "Enables or disables the text editing mode of the screen editor.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $45 (EDIT) $91 (ON) $FE $24 (OFF)"
+  },
+  "EDMA": {
+    "syntax": "EDMA command, length, source, target",
+    "summary": "Copies or updates a large amount of memory quickly.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $21",
+    "details": "EDMA can access the entire 256MB address range, using up to 28 bits for the addresses of the source and target."
+  },
+  "EL": {
+    "syntax": "EL",
+    "summary": "The line number where the most recent BASIC error occurred, or the value -1 if there was no error.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "EL is a reserved system variable."
+  },
+  "ELLIPSE": {
+    "syntax": "ELLIPSE xc, yc, xr, yr[, flags , start, stop]",
+    "summary": "Bitmap graphics: draws an ellipse.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $30",
+    "details": "ELLIPSE is used to draw ellipses on screens at various resolutions."
+  },
+  "ELSE": {
+    "syntax": "IF expression THEN true clause [ELSE false clause]",
+    "summary": "ELSE is an optional part of an IF statement.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D5",
+    "details": "There must be a colon before ELSE."
+  },
+  "END": {
+    "syntax": "END",
+    "summary": "Ends the execution of the BASIC program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$80",
+    "details": "END does not clear channels nor close files."
+  },
+  "ENVELOPE": {
+    "syntax": "ENVELOPE n [{, attack, decay, sustain, release, waveform, pw}]",
+    "summary": "Sets the parameters for the synthesis of a musical instrument for use with PLAY.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0A"
+  },
+  "ER": {
+    "syntax": "ER",
+    "summary": "The number of the most recent BASIC error that has occurred, or -1 if there was no error.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "ER is a reserved system variable."
+  },
+  "ERASE": {
+    "syntax": "ERASE filename [,D drive] [,U unit] [,R]",
+    "summary": "Erases (deletes) a disk file.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2A",
+    "details": "ERASE is a synonym of SCRATCH and DELETE."
+  },
+  "ERR$": {
+    "syntax": "ERR$(number)",
+    "summary": "The string description of a given BASIC error number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D3",
+    "details": "A BASIC error number out of range (1 – 44) will produce an OK."
+  },
+  "EXIT": {
+    "syntax": "EXIT",
+    "summary": "Exits the current DO ...",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$ED",
+    "details": "In nested loops, EXIT exits only the current loop, and continues execution in the outer loop (if there is one)."
+  },
+  "EXP": {
+    "syntax": "EXP(numeric expression)",
+    "summary": "The value of the mathematical constant Euler’s number (2.71828183) raised to the power of the argument.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BD",
+    "details": "An argument greater than 88 produces an Overflow error."
+  },
+  "FAST": {
+    "syntax": "FAST [speed]",
+    "summary": "Sets CPU clock speed to 1 MHz, 3.5 MHz or 40 MHz.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $25",
+    "details": "Although it’s possible to call FAST with any real number, the precision part (the decimal point and any digits after it), will be ignored."
+  },
+  "FGOSUB": {
+    "syntax": "FGOSUB numeric expression",
+    "summary": "Evaluates the given numeric expression, then call GOSUBs the subroutine at the resulting line number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $48",
+    "details": "Take care when using RENUMBER to change the line numbers of your program that any FGOSUB statements still use the intended numbers."
+  },
+  "FGOTO": {
+    "syntax": "FGOTO numeric expression",
+    "summary": "Evaluates the given numeric expression, then GOTOs to the resulting line number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $47",
+    "details": "Take care when using RENUMBER to change the line numbers of your program that any FGOTO statements still use the intended numbers."
+  },
+  "FILTER": {
+    "syntax": "FILTER sid [{, freq, lp, bp, hp, res}]",
+    "summary": "Sets the parameters for a SID sound filter.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $03",
+    "details": "Missing parameters keep their current value."
+  },
+  "FIND": {
+    "syntax": "FIND /string/ [, line range]\nFIND ”string” [, line range]",
+    "summary": "Searches the BASIC program that is currently in memory for all instances of a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2B",
+    "details": "Almost any character that is not part of the string, including letters and punctuation, can be used instead of the ’/’ (slash)."
+  },
+  "FN": {
+    "syntax": "FN name(numeric expression)",
+    "summary": "FN functions are user-defined functions, that accept a numeric expression as an argument and return a real value.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A5"
+  },
+  "FONT": {
+    "syntax": "FONT <A | B | C>",
+    "summary": "Updates all characters to the given built-in font.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $46",
+    "details": "The additional ASCII characters provided by FONT A and B are only available while using the lowercase character set."
+  },
+  "FOR": {
+    "syntax": "FOR index = start TO end [STEP step] ... NEXT [index]",
+    "summary": "FOR statements start a BASIC loop with an index variable.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$81",
+    "details": "For positive increments end must be greater than or equal to start, whereas for negative increments end must be less than or equal to start."
+  },
+  "FOREGROUND": {
+    "syntax": "FOREGROUND colour",
+    "summary": "Sets the foreground text colour for subsequent PRINT commands.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $39",
+    "details": "This is another name for COLOR."
+  },
+  "FORMAT": {
+    "syntax": "FORMAT diskname [,I id] [,D drive] [,U unit]",
+    "summary": "Formats a disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $37",
+    "details": "FORMAT is another name for the HEADER command."
+  },
+  "FRE": {
+    "syntax": "FRE(bank)",
+    "summary": "Statistics about how memory is used, or other system properties.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B8"
+  },
+  "FREAD#": {
+    "syntax": "FREAD# channel, pointer, size",
+    "summary": "Reads size bytes from channel to memory starting at the 32-bit address pointer.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1C",
+    "details": "Keep in mind that the POINTER function with a string argument does not return the string address, but the string descriptor."
+  },
+  "FREEZER": {
+    "syntax": "FREEZER",
+    "summary": "Invokes the Freezer menu.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $4A",
+    "details": "Entering the FREEZER command is an alternative to holding and releasing RESTORE the key."
+  },
+  "FWRITE#": {
+    "syntax": "FWRITE# channel, pointer, size",
+    "summary": "Writes size bytes to channel from memory starting at the 32-bit address pointer.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1E",
+    "details": "Keep in mind that the POINTER function with a string argument does not return the string address, but the string descriptor."
+  },
+  "GCOPY": {
+    "syntax": "GCOPY x, y, width, height",
+    "summary": "Bitmap graphics: copies the content of the specified rectangle with upper left position x, y and the width and height to a buffer.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $32",
+    "details": "The size of the rectangle is limited by the 1KB size of the buffer."
+  },
+  "GET": {
+    "syntax": "GET variable",
+    "summary": "Gets the next character, or byte value of the next character, from the keyboard queue.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A1",
+    "details": "GETKEY is similar, but waits until a key has been pressed."
+  },
+  "GET#": {
+    "syntax": "GET# channel, variable [, variable …]",
+    "summary": "Reads a single byte from the channel argument and assigns single character strings to string variables, or an 8-bit binary value to numeric variables.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A1 ’#’",
+    "details": "All values from 0 to 255 are valid, so GET# can also be used to read binary data."
+  },
+  "GETKEY": {
+    "syntax": "GETKEY variable",
+    "summary": "Gets the next character, or byte value of the next character, from the keyboard queue.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A1 (GET) $F9 (KEY)"
+  },
+  "GO64": {
+    "syntax": "GO64",
+    "summary": "Switches the MEGA65 to C64-compatible mode.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CB (GO) $36 $34 (”64”)",
+    "details": "If you switch back to the MEGA65 using the SYS 58552, the switch will be immediate."
+  },
+  "GOSUB": {
+    "syntax": "GOSUB line number",
+    "summary": "GOSUB (GOto SUBroutine) continues program execution at the given BASIC line number, saving the current BASIC program counter and line number on the run-time stack.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8D",
+    "details": "Unlike other programming languages, BASIC does not support arguments or local variables for subroutines."
+  },
+  "GOTO": {
+    "syntax": "GOTO line\nGO TO line",
+    "summary": "Continues program execution at the given BASIC line number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$89 (GOTO) or $CB $A4 (GO TO)",
+    "details": "If the target line number is higher than the current line number, the search starts from the current line, proceeding to higher line numbers."
+  },
+  "GRAPHIC": {
+    "syntax": "GRAPHIC CLR",
+    "summary": "Bitmap graphics: initialises the BASIC bitmap graphics system.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DE"
+  },
+  "HASBIT": {
+    "syntax": "HASBIT(address, bit number)",
+    "summary": "True (-1) if the value stored in the address has the given bit set, otherwise false (0).",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $13"
+  },
+  "HEADER": {
+    "syntax": "HEADER diskname [,I id] [,D drive] [,U unit]",
+    "summary": "Formats a disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F1",
+    "details": "HEADER is another name for the FORMAT command."
+  },
+  "HELP": {
+    "syntax": "HELP",
+    "summary": "Displays information about where an error occurred in a BASIC program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$EA",
+    "details": "Displays BASIC errors."
+  },
+  "HEX$": {
+    "syntax": "HEX$(numeric expression)",
+    "summary": "A four or eight character hexadecimal representation of the argument.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D2",
+    "details": "If real numbers are used as arguments, the fractional part will be ignored."
+  },
+  "HIGHLIGHT": {
+    "syntax": "HIGHLIGHT colour [, mode]",
+    "summary": "Sets the colours used for code highlighting.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $3D",
+    "details": "The system messages colour is used when displaying error messages, and in the output of CHANGE, FIND, and HELP."
+  },
+  "IF": {
+    "syntax": "IF expression THEN true clause [ELSE false clause]",
+    "summary": "Starts a conditional execution statement.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8B",
+    "details": "The standard IF ..."
+  },
+  "IMPORT": {
+    "syntax": "IMPORT filename [,D drive] [,U unit]",
+    "summary": "Loads BASIC code in text format from a file of type SEQ into memory reserved for BASIC programs.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DD",
+    "details": "The program is loaded into BASIC memory and converted from text to the tokenised form of PRG files."
+  },
+  "INFO": {
+    "syntax": "INFO",
+    "summary": "Displays information about the runtime environment.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $4D",
+    "details": "The INFO command displays information about the BASIC runtime environment, including: • The video mode (PAL, NTSC)."
+  },
+  "INPUT": {
+    "syntax": "INPUT [prompt <, | ;>] variable [, variable ...]",
+    "summary": "Prompts the user for keyboard input, printing an optional prompt string and question mark to the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$85",
+    "details": "The user must take care to enter the correct type of input, so it matches the variable list types."
+  },
+  "INPUT#": {
+    "syntax": "INPUT# channel, variable [, variable ...]",
+    "summary": "Reads a record from an input device, e.g.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$84",
+    "details": "The type and number of data in a record must match the variable list."
+  },
+  "INSTR": {
+    "syntax": "INSTR(haystack, needle [, start])",
+    "summary": "Locates the position of the string expression needle in the string expression haystack, and returns the index of the first occurrence, or zero if there is no match.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D4",
+    "details": "If either string is empty or there is no match the function returns zero."
+  },
+  "INT": {
+    "syntax": "INT(numeric expression)",
+    "summary": "The integer part of a number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B5",
+    "details": "It is not necessary to use the INT function for assigning real values to integer or byte variables, as this conversion will be done implicitly."
+  },
+  "JOY": {
+    "syntax": "JOY(port)",
+    "summary": "The state of the joystick for the selected controller port (1 or 2).",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CF",
+    "details": "The return value of port 3, for two joysticks connected and moved simultaneously, is undefined."
+  },
+  "KEY": {
+    "syntax": "KEY\nKEY <ON | OFF>\nKEY <LOAD | SAVE> filename\nKEY number, string\nKEY RESTORE",
+    "summary": "Manages the function key macros in the BASIC editor.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F9",
+    "details": "The sum of the lengths of all assigned strings must not exceed 240 characters."
+  },
+  "LEFT$": {
+    "syntax": "LEFT$(string, n)",
+    "summary": "A string containing the first n characters from the argument string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C8",
+    "details": "Empty strings and zero length are legal values."
+  },
+  "LEN": {
+    "syntax": "LEN(string)",
+    "summary": "The length of a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C3",
+    "details": "BASIC strings can contain any character, including the null character."
+  },
+  "LET": {
+    "syntax": "[LET] variable = expression",
+    "summary": "Assigns values (or results of expressions) to variables.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$88",
+    "details": "The LET statement is obsolete and not required."
+  },
+  "LINE": {
+    "syntax": "LINE xbeg, ybeg[, xnext1, ynext1 ...]",
+    "summary": "Bitmap graphics: draws a line or series of lines.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E5"
+  },
+  "LINE INPUT": {
+    "syntax": "LINE INPUT [prompt <, | ;>] string variable [, string variable ...]",
+    "summary": "Prompts the user for keyboard input, printing an optional prompt string and question mark to the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E5 $85",
+    "details": "This differs from INPUT in how the input is parsed."
+  },
+  "LINE INPUT#": {
+    "syntax": "LINE INPUT# channel, variable [, variable ...]",
+    "summary": "Reads one record per variable from an input device (such as a disk drive), and assigns the read data to the variable.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E5 $84",
+    "details": "Only string variables or string array elements can be used in the variable list."
+  },
+  "LIST": {
+    "syntax": "LIST [P] [line range]\nLIST [P] filename [,U unit]",
+    "summary": "Lists a range of lines from the BASIC program in memory.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9B",
+    "details": "The optional parameter P enables page mode."
+  },
+  "LOAD": {
+    "syntax": "LOAD filename [, unit [, flag]]\nLOAD ”$[pattern=type]” [, unit]\nLOAD ”$$[pattern=type]” [, unit]\n/ filename [, unit [, flag]]",
+    "summary": "The first form loads a file of type PRG into memory reserved for BASIC programs.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$93",
+    "details": "LOAD loads files of type PRG into RAM bank 0, which is also used for BASIC program source."
+  },
+  "LOADIFF": {
+    "syntax": "LOADIFF filename [,D drive] [,U unit]",
+    "summary": "Bitmap graphics: loads an IFF file into graphics memory.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $43",
+    "details": "Tools are available to convert popular image formats to IFF."
+  },
+  "LOCK": {
+    "syntax": "LOCK <filename|pattern> [,D drive] [,U unit]",
+    "summary": "Locks a file on disk, preventing it from being updated or deleted.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $50",
+    "details": "In direct mode, the number of locked files is printed."
+  },
+  "LOG": {
+    "syntax": "LOG(numeric expression)",
+    "summary": "The natural logarithm of a number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BC",
+    "details": "For convenience, BASIC 65 includes separate functions for logarithms in base 10 and base 2: LOG10() and LOG2(), respectively."
+  },
+  "LOG10": {
+    "syntax": "LOG10(numeric expression)",
+    "summary": "The decimal logarithm of the numeric expression.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $08"
+  },
+  "LOG2": {
+    "syntax": "LOG2(numeric expression)",
+    "summary": "The binary logarithm of the numeric expression.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $16"
+  },
+  "LOOP": {
+    "syntax": "DO ... LOOP\nDO [<UNTIL | WHILE> logical expression] ... statements [EXIT]\nLOOP [<UNTIL | WHILE> logical expression]",
+    "summary": "DO ...",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$EC",
+    "details": "DO loops may be nested."
+  },
+  "LPEN": {
+    "syntax": "LPEN(coordinate)",
+    "summary": "The state of a light pen peripheral.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $04",
+    "details": "The X resolution is two pixels, therefore LPEN(0) only returns even numbers."
+  },
+  "MEM": {
+    "syntax": "MEM mask4, mask5",
+    "summary": "Reserves memory in banks 4 or 5, such that the bitmap graphics system will not use it.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $23"
+  },
+  "MERGE": {
+    "syntax": "MERGE filename [,D drive] [,U unit]",
+    "summary": "Loads a BASIC program file from disk and appends it to the program in memory.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E6",
+    "details": "The load address stored in the first two bytes of the file is ignored."
+  },
+  "MID$": {
+    "syntax": "MID$(string, index, n)\nMID$(string variable, index, n) = string expression",
+    "summary": "As a function, the substring of a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CA",
+    "details": "Empty strings and zero lengths are legal values."
+  },
+  "MKDIR": {
+    "syntax": "MKDIR dirname ,L size [,U unit]",
+    "summary": "Makes (creates) a subdirectory on a floppy or D81 disk image.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $51"
+  },
+  "MOD": {
+    "syntax": "MOD(dividend, divisor)",
+    "summary": "The remainder of a division operation.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0B",
+    "details": "In other programming languages such as C, this function is implemented as an operator (%)."
+  },
+  "MONITOR": {
+    "syntax": "MONITOR",
+    "summary": "Invokes the KERNAL machine language monitor.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FA",
+    "details": "Using the MONITOR requires knowledge of the CSG4510 / 6502 / 6510 CPUs, the assembly language they use, and their architectures."
+  },
+  "MOUNT": {
+    "syntax": "MOUNT filename [,U unit]\nMOUNT [U unit]\nMOUNT OFF [U unit]",
+    "summary": "Mounts a disk image file of type D81 or D64 from SD card to unit 8 (default) or unit 9 (U9).",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $49",
+    "details": "MOUNT can be used either in direct mode or in a program."
+  },
+  "MOUSE": {
+    "syntax": "MOUSE ON [{, port, sprite, hotspot, pos}]\nMOUSE OFF",
+    "summary": "Enables the mouse driver and connects the mouse at the specified port with the mouse pointer sprite.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $3E",
+    "details": "The ”hot spot” of the mouse specifies where in the mouse sprite image is considered the click target, such as the top of an arrow or the center of a target reticle."
+  },
+  "MOVSPR": {
+    "syntax": "MOVSPR number, position\nMOVSPR number, start-position TO end-position, speed",
+    "summary": "Moves a sprite to a location on screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $06"
+  },
+  "NEW": {
+    "syntax": "NEW\nNEW RESTORE",
+    "summary": "Erases the BASIC program in memory, and resets all BASIC parameters to their default values.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A2"
+  },
+  "NEXT": {
+    "syntax": "FOR index = start TO end [STEP step] ... NEXT [index]",
+    "summary": "Marks the end of the loop associated with the given index variable.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$82",
+    "details": "The index variable after NEXT is optional."
+  },
+  "NOT": {
+    "syntax": "NOT operand",
+    "summary": "Performs a bit-wise logical NOT operation on a 16-bit value.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A8",
+    "details": "The result is of type integer."
+  },
+  "OFF": {
+    "syntax": "keyword OFF",
+    "summary": "OFF is a secondary keyword used in combination with primary keywords, such as KEY and MOUSE.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $24",
+    "details": "OFF cannot be used on its own."
+  },
+  "ON": {
+    "syntax": "ON expression GOSUB line number [, line number ...]\nON expression GOTO line number [, line number ...]\nkeyword ON",
+    "summary": "Performs GOSUB or GOTO to a line number selected by a number expression.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$91",
+    "details": "Negative values for expression will stop the program with an Illegal Quantity error."
+  },
+  "OPEN": {
+    "syntax": "OPEN channel, first address [, secondary address [, filename]]",
+    "summary": "Opens an input/output channel for a device.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$9F",
+    "details": "For IEC disk units the usage of DOPEN# is recommended."
+  },
+  "OR": {
+    "syntax": "operand OR operand",
+    "summary": "Performs a bit-wise logical OR operation on two 16-bit values.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B0",
+    "details": "The result is of type integer."
+  },
+  "PAINT": {
+    "syntax": "PAINT x, y, mode [, region border colour]",
+    "summary": "Bitmap graphics: performs a flood fill of an enclosed graphics area using the current pen colour.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DF"
+  },
+  "PALETTE": {
+    "syntax": "PALETTE screen, colour, red, green, blue\nPALETTE COLOR colour, red, green, blue\nPALETTE RESTORE",
+    "summary": "PALETTE can be used to change an entry of the system colour palette, or the palette of a screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $34"
+  },
+  "PASTE": {
+    "syntax": "PASTE x, y",
+    "summary": "Bitmap graphics: pastes the content of the CUT or GCOPY buffer onto the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E3",
+    "details": "The size of the rectangle is limited by the 1KB size of the buffer."
+  },
+  "PEEK": {
+    "syntax": "PEEK(address)",
+    "summary": "The byte value stored in memory at address, as an unsigned 8-bit number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C2",
+    "details": "Banks 0 – 127 give access to RAM or ROM banks."
+  },
+  "PEN": {
+    "syntax": "PEN colour",
+    "summary": "Bitmap graphics: sets the colour (palette entry) of the graphic pen for the current screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $33",
+    "details": "The C65 design documentation describes a two-argument form of PEN that sets the palette entry for one of two pens: the drawing pen colour (pen 0), and a secondary colour used by the jam drawing mode (pen 1)."
+  },
+  "PIXEL": {
+    "syntax": "PIXEL(x, y)",
+    "summary": "Bitmap graphics: the colour of a pixel at the given position.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0C"
+  },
+  "PLAY": {
+    "syntax": "PLAY [{string1, string2, string3, string4, string5, string6}]",
+    "summary": "Starts playing a sequence of musical notes, or stops a currently playing sequence.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $04",
+    "details": "The PLAY statement makes use of an interrupt driven routine that starts parsing the string and playing the melody."
+  },
+  "POINTER": {
+    "syntax": "POINTER(variable)",
+    "summary": "The current address of a variable or an array element as a 32-bit pointer.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0A",
+    "details": "The address values of arrays and their elements are constant while the program is executing."
+  },
+  "POKE": {
+    "syntax": "POKE address, value [, value ...]",
+    "summary": "Writes one or more bytes into memory or memory mapped I/O, starting at address.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$97",
+    "details": "The address is incremented for each data byte, so a memory range can be written to with a single POKE."
+  },
+  "POLYGON": {
+    "syntax": "POLYGON x, y, xrad, yrad, sides [{, drawsides, subtend, angle, solid}]",
+    "summary": "Bitmap graphics: draws a regular n-sided polygon.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2F",
+    "details": "A regular polygon is both isogonal and isotoxal, meaning all sides and angles are alike."
+  },
+  "POS": {
+    "syntax": "POS(dummy)",
+    "summary": "The cursor column relative to the currently used window.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B9",
+    "details": "POS gives the column position for the screen cursor."
+  },
+  "POT": {
+    "syntax": "POT(paddle)",
+    "summary": "The position of a paddle peripheral.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $02",
+    "details": "Analogue paddles are noisy and inexact."
+  },
+  "PRINT": {
+    "syntax": "PRINT arguments",
+    "summary": "Prints a series of values formatted to the current output stream, typically the screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$99",
+    "details": "The SPC and TAB functions may be used in the argument list for positioning."
+  },
+  "PRINT USING": {
+    "syntax": "PRINT[# channel,] USING format; argument",
+    "summary": "Prints a series of values formatted using a pattern to the current output stream (typically the screen) or an output channel.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$98 $FB or $99 $FB"
+  },
+  "PRINT#": {
+    "syntax": "PRINT# channel, arguments",
+    "summary": "Prints a series of values formatted to the device assigned to channel.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$98",
+    "details": "The SPC and TAB functions are not suitable for devices other than the screen."
+  },
+  "RCOLOR": {
+    "syntax": "RCOLOR(colour source)",
+    "summary": "The current colour index for the selected colour source.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CD"
+  },
+  "RCURSOR": {
+    "syntax": "RCURSOR {colvar, rowvar}",
+    "summary": "Reads the current cursor column and row into variables.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $42",
+    "details": "The row and column values start at zero, where the left-most column is zero, and the top row is zero."
+  },
+  "RDISK": {
+    "syntax": "RDISK(property number)",
+    "summary": "The value of a property of the most recent disk action.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $15"
+  },
+  "READ": {
+    "syntax": "READ variable [, variable ...]",
+    "summary": "Reads values from DATA statements into variables.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$87",
+    "details": "It is good programming practice to put large amounts of DATA statements at the end of the program, so they don’t slow down the search for line numbers after GOTO, and other statements with line number targets."
+  },
+  "RECORD": {
+    "syntax": "RECORD# channel, record [, byte]",
+    "summary": "Positions the read/write pointer of a relative file.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $12",
+    "details": "The Commodore disk drives have a bug in their DOS, which can destroy data by using relative files."
+  },
+  "REM": {
+    "syntax": "REM",
+    "summary": "REM (short for remark) ignores all subsequent characters on a line of BASIC code, as a code comment.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8F"
+  },
+  "RENAME": {
+    "syntax": "RENAME old TO new [,D drive] [,U unit]",
+    "summary": "Renames a disk file.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F5",
+    "details": "RENAME is executed in the DOS of the disk drive."
+  },
+  "RENUMBER": {
+    "syntax": "RENUMBER [C] [{new, inc, range}]",
+    "summary": "Renumbers lines of a BASIC program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F8",
+    "details": "RENUMBER may need several minutes to execute for large programs."
+  },
+  "RESTORE": {
+    "syntax": "RESTORE [line]",
+    "summary": "Sets the internal pointer for READ from DATA statements.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8C",
+    "details": "The new pointer target line does not need to contain DATA statements."
+  },
+  "RESUME": {
+    "syntax": "RESUME [line | NEXT]",
+    "summary": "Resumes normal program execution in a TRAP routine, after handling an error.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D6",
+    "details": "RESUME cannot be used in direct mode."
+  },
+  "RETURN": {
+    "syntax": "RETURN",
+    "summary": "Returns control from a subroutine that was called with GOSUB or an event handler declared with COLLISION.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8E"
+  },
+  "RGRAPHIC": {
+    "syntax": "RGRAPHIC(screen, parameter)",
+    "summary": "Bitmap graphics: the status of a given graphic screen parameter.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CC"
+  },
+  "RIGHT$": {
+    "syntax": "RIGHT$(string, n)",
+    "summary": "A string containing the last n characters from string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C9",
+    "details": "Empty strings and zero lengths are legal values."
+  },
+  "RMOUSE": {
+    "syntax": "RMOUSE x variable, y variable, button variable",
+    "summary": "Reads mouse position and button status.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $3F",
+    "details": "RMOUSE places -1 into all variables if the mouse is not connected or disabled."
+  },
+  "RND": {
+    "syntax": "RND(type)",
+    "summary": "A pseudo-random number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BB",
+    "details": "Seeded random number sequences produce the same sequence for identical seeds."
+  },
+  "RPALETTE": {
+    "syntax": "RPALETTE(screen, index, rgb)",
+    "summary": "The red, green, or blue value of a palette colour index.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0D"
+  },
+  "RPEN": {
+    "syntax": "RPEN(n)",
+    "summary": "The colour index of pen n.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D0"
+  },
+  "RPLAY": {
+    "syntax": "RPLAY(voice)",
+    "summary": "Tests whether music is playing on the given voice channel.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0F"
+  },
+  "RPT$": {
+    "syntax": "RPT$(string, count)",
+    "summary": "A new string equivalent to string repeated count times.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $14",
+    "details": "If the new string would be longer than 255 characters, this reports a String Too Long error."
+  },
+  "RREG": {
+    "syntax": "RREG [{areg, xreg, yreg, zreg, sreg}]",
+    "summary": "Reads the values that were in the CPU registers after a SYS call, into the specified variables.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $09",
+    "details": "The register values after a SYS call are stored in system memory."
+  },
+  "RSPCOLOR": {
+    "syntax": "RSPCOLOR(n)",
+    "summary": "The colour setting of a multi-colour sprite colour.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $07",
+    "details": "Refer to SPRITE and SPRCOLOR for more information."
+  },
+  "RSPEED": {
+    "syntax": "RSPEED(n)",
+    "summary": "The current CPU clock in MHz.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $0E",
+    "details": "RSPEED(n) will not return the correct value if POKE 0, 65 has previously been used to enable the highest speed (40 MHz)."
+  },
+  "RSPPOS": {
+    "syntax": "RSPPOS(sprite, n)",
+    "summary": "A sprite’s position or speed.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $05",
+    "details": "Refer to the MOVSPR and SPRITE commands for more information."
+  },
+  "RSPRITE": {
+    "syntax": "RSPRITE(sprite, n)",
+    "summary": "A sprite parameter.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $06",
+    "details": "Refer to the MOVSPR and SPRITE commands for more information."
+  },
+  "RSPRSYS": {
+    "syntax": "RSPRSYS(n)",
+    "summary": "A sprite system parameter.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $17",
+    "details": "Refer to the SPRITE SYS command for more information."
+  },
+  "RUN": {
+    "syntax": "RUN [line number]\nRUN filename [,D drive] [,U unit]\n↑ filename",
+    "summary": "Runs the BASIC program in memory, or loads and runs a program from disk.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$8A",
+    "details": "RUN first resets all internal pointers to their default values."
+  },
+  "RWINDOW": {
+    "syntax": "RWINDOW(n)",
+    "summary": "A parameter of the current text window.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $09",
+    "details": "Refer to the WINDOW command for more information."
+  },
+  "SAVE": {
+    "syntax": "SAVE filename [, unit]\n← filename [, unit]",
+    "summary": "Saves a BASIC program to a file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$94",
+    "details": "SAVE is obsolete, implemented only for backwards compatibility."
+  },
+  "SAVEIFF": {
+    "syntax": "SAVEIFF filename [,D drive] [,U unit]",
+    "summary": "Bitmap graphics: saves the current graphics screen to a disk file in IFF format.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $44",
+    "details": "Files saved with SAVEIFF can be loaded with LOADIFF."
+  },
+  "SCNCLR": {
+    "syntax": "SCNCLR [colour]",
+    "summary": "Clears a text window or bitmap graphics screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E8"
+  },
+  "SCRATCH": {
+    "syntax": "SCRATCH filename [,D drive] [,U unit] [,R]",
+    "summary": "Erases (“scratches”) a disk file.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$F2",
+    "details": "SCRATCH is a synonym of ERASE and DELETE."
+  },
+  "SCREEN": {
+    "syntax": "SCREEN [screen,] width, height, depth\nSCREEN CLR colour\nSCREEN DEF screen, width flag, height flag, depth\nSCREEN SET drawscreen, viewscreen\nSCREEN OPEN [screen]\nSCREEN CLOSE [screen]",
+    "summary": "Bitmap graphics: manages a graphics screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2E",
+    "details": "Graphics screens are allocated in banks 4 and 5 of memory."
+  },
+  "SET": {
+    "syntax": "SET DEF unit\nSET DISK old TO new\nSET VERIFY <ON | OFF>",
+    "summary": "SET DEF redefines the default unit for disk access, which is initialised to 8 by the DOS.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2D",
+    "details": "These settings are valid until a reset or shutdown."
+  },
+  "SETBIT": {
+    "syntax": "SETBIT address, bit number",
+    "summary": "Sets a single bit at the address.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $2D $FE $4E"
+  },
+  "SGN": {
+    "syntax": "SGN(numeric expression)",
+    "summary": "The sign of a numeric expression, as a number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B4"
+  },
+  "SIN": {
+    "syntax": "SIN(radians expression)\nSIND(degrees expression)",
+    "summary": "The sine of an angle.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BF"
+  },
+  "SLEEP": {
+    "syntax": "SLEEP seconds",
+    "summary": "Pauses execution for the given duration.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $0B",
+    "details": "Pressing STOP interrupts the sleep."
+  },
+  "SOUND": {
+    "syntax": "SOUND voice, freq, dur [{, dir, min, sweep, wave, pulse}]\nSOUND CLR",
+    "summary": "SOUND plays a sound effect.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DA",
+    "details": "SOUND starts playing the sound effect and immediately continues with the execution of the next BASIC statement while the sound effect is played."
+  },
+  "SPC": {
+    "syntax": "SPC(columns)",
+    "summary": "As an argument to PRINT, a string of cursor-right PETSCII codes, suitable for printing to advance the cursor the given number of columns.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A6",
+    "details": "The name of this function is derived from “spaces,” which is misleading."
+  },
+  "SPEED": {
+    "syntax": "SPEED [speed]",
+    "summary": "Sets the CPU clock speed to 1 MHz, 3.5 MHz, or 40.5 MHz.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $26",
+    "details": "Although it’s possible to call SPEED with any real number, the precision part (the decimal point and any digits after it), will be ignored."
+  },
+  "SPRCOLOR": {
+    "syntax": "SPRCOLOR [{mc1, mc2}]",
+    "summary": "Sets multi-colour sprite colours.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $08",
+    "details": "The colours used with SPRCOLOR will affect all sprites."
+  },
+  "SPRITE": {
+    "syntax": "SPRITE CLR\nSPRITE LOAD filename [,D drive] [,U unit]\nSPRITE SAVE filename [,D drive] [,U unit]\nSPRITE num [{, switch, colour, prio, expx, expy, mode}]\nSPRITE SYS R hires-mode",
+    "summary": "SPRITE CLR clears all sprite data and sets all pointers and attributes to their default values.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $07"
+  },
+  "SPRSAV": {
+    "syntax": "SPRSAV source, destination",
+    "summary": "Copies sprite data between two sprites, or between a sprite and a string variable.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $16",
+    "details": "Source and destination can either be a sprite number or a string variable, SPRSAV can be used with the basic form of sprites (C64 compatible) only."
+  },
+  "SQR": {
+    "syntax": "SQR(numeric expression)",
+    "summary": "The square root of a numeric expression.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$BA",
+    "details": "The argument must not be negative."
+  },
+  "ST": {
+    "syntax": "ST",
+    "summary": "The status of the last I/O operation.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "ST is a reserved system variable."
+  },
+  "STEP": {
+    "syntax": "FOR index = start TO end [STEP step] ... NEXT [index]",
+    "summary": "STEP is an optional part of a FOR loop.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A9",
+    "details": "For positive increments, end must be greater than or equal to start."
+  },
+  "STOP": {
+    "syntax": "STOP",
+    "summary": "Stops the execution of the BASIC program.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$90",
+    "details": "All variable definitions are still valid after STOP."
+  },
+  "STR$": {
+    "syntax": "STR$(numeric expression)",
+    "summary": "A string of the formatted value of the argument, as if it were PRINTed to the string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C4"
+  },
+  "STRBIN$": {
+    "syntax": "STRBIN$(numeric expression)",
+    "summary": "The number value as a string of its binary representation.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $12",
+    "details": "Fractional parts will be ignored."
+  },
+  "SYS": {
+    "syntax": "SYS address [{, areg, xreg, yreg, zreg, sreg}]\nSYS TO address [{,A areg,X xreg,Y yreg,Z zreg,S sreg ,I BASIC interrupt\nmode ,O MAPL offset }]",
+    "summary": "Calls a machine language subroutine.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "SYS : $9E",
+    "details": "The register values after a SYS call are stored in system memory."
+  },
+  "T@&": {
+    "syntax": "T@&(column, row)",
+    "summary": "Reads or sets the screen code of a character at given screen coordinates.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "T@& is a reserved system variable."
+  },
+  "TAB": {
+    "syntax": "TAB(column)",
+    "summary": "Positions the cursor at column.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A3",
+    "details": "This function shouldn’t be confused with , which advances the cursor to the next tab-stop."
+  },
+  "TAN": {
+    "syntax": "TAN(radians expression)\nTAND(degrees expression)",
+    "summary": "The tangent of an angle.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C0"
+  },
+  "TEMPO": {
+    "syntax": "TEMPO speed",
+    "summary": "Sets the playback speed for PLAY.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $05"
+  },
+  "THEN": {
+    "syntax": "IF expression THEN true clause [ELSE false clause]",
+    "summary": "THEN is part of an IF statement.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A7",
+    "details": "The standard IF ..."
+  },
+  "TI": {
+    "syntax": "TI",
+    "summary": "A high precision timer variable with a resolution of 1 micro second.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "TI is a reserved system variable."
+  },
+  "TI$": {
+    "syntax": "TI$",
+    "summary": "The current time of day, as a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "N/A",
+    "details": "TI$ is a reserved system variable."
+  },
+  "TO": {
+    "syntax": "keyword TO",
+    "summary": "TO is a secondary keyword used in combination with primary keywords, such as BACKUP, BSAVE, CHANGE, CONCAT, COPY, FOR, GO, RE- NAME, and SET DISK.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$A4",
+    "details": "TO cannot be used on its own."
+  },
+  "TRAP": {
+    "syntax": "TRAP [line number]",
+    "summary": "Registers (or clears) a BASIC error handler subroutine.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D7"
+  },
+  "TROFF": {
+    "syntax": "TROFF",
+    "summary": "Turns off trace mode (switched on by TRON).",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D9"
+  },
+  "TRON": {
+    "syntax": "TRON",
+    "summary": "Turns on trace mode.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$D8"
+  },
+  "TYPE": {
+    "syntax": "TYPE [P] filename [,D drive] [,U unit]",
+    "summary": "Prints the contents of a file containing text encoded as PETSCII.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $27",
+    "details": "TYPE cannot be used to print BASIC programs."
+  },
+  "UNLOCK": {
+    "syntax": "UNLOCK filename/pattern [,D drive] [,U unit]",
+    "summary": "Unlocks a file on disk previously locked using LOCK.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $4F",
+    "details": "Unlocking a file that is already unlocked has no effect."
+  },
+  "UNTIL": {
+    "syntax": "DO ... LOOP\nDO [<UNTIL | WHILE> logical expression] ... statements [EXIT]\nLOOP [<UNTIL | WHILE> logical expression]",
+    "summary": "DO ...",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FC",
+    "details": "DO loops may be nested."
+  },
+  "USING": {
+    "syntax": "PRINT[# channel,] USING format; argument",
+    "summary": "Parses the format string and evaluates the argument.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FB",
+    "details": "The format string is only applied for one argument, but it is possible to append more than one USING format;argument sequences."
+  },
+  "USR": {
+    "syntax": "USR(numeric expression)",
+    "summary": "Invokes an assembly language routine whose memory address is stored at $02F8 – $02F9.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$B7",
+    "details": "Banks 0 – 127 give access to RAM or ROM banks."
+  },
+  "VAL": {
+    "syntax": "VAL(string expression)",
+    "summary": "The decimal floating point value represented by a string.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$C5",
+    "details": "VAL parses characters from the beginning of the string that resemble a BASIC decimal number, including a leading negative sign, digits, a decimal point, and an exponent."
+  },
+  "VERIFY": {
+    "syntax": "VERIFY filename [, unit [, binflag]]",
+    "summary": "VERIFY with no binflag compares a BASIC program in memory with a disk file of type PRG.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$95",
+    "details": "VERIFY can only test for equality."
+  },
+  "VIEWPORT": {
+    "syntax": "VIEWPORT CLR\nVIEWPORT DEF x, y, width, height",
+    "summary": "Bitmap graphics: manages the viewport of a screen.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $31",
+    "details": "The clipping region can be reset to full screen by the command VIEWPORT DEF 0, 0, WIDTH, HEIGHT using the same values for width and height as in the SCREEN command."
+  },
+  "VOL": {
+    "syntax": "VOL right, left",
+    "summary": "Sets the volume for sound output with SOUND or PLAY.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$DB",
+    "details": "The terms ”right” and ”left” refer to the default pan settings for the SID chips in the audio mixer."
+  },
+  "VSYNC": {
+    "syntax": "VSYNC raster line",
+    "summary": "Waits until the selected raster line is active.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $54"
+  },
+  "WAIT": {
+    "syntax": "WAIT address, andmask [, xormask]",
+    "summary": "Pauses the BASIC program until a requested bit pattern is read from the given address.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$92",
+    "details": "WAIT is typically used to examine hardware registers or system variables and wait for an event, e.g."
+  },
+  "WHILE": {
+    "syntax": "DO ... LOOP\nDO [<UNTIL | WHILE> logical expression] ... statements [EXIT]\nLOOP [<UNTIL | WHILE> logical expression]",
+    "summary": "DO ...",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FD",
+    "details": "DO loops may be nested."
+  },
+  "WINDOW": {
+    "syntax": "WINDOW left, top, right, bottom[, clear]",
+    "summary": "Sets the text screen window position and size.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1A",
+    "details": "The row values range from 0 to 24."
+  },
+  "WPEEK": {
+    "syntax": "WPEEK(address)",
+    "summary": "The 16-bit word value stored in memory at address (low byte) and address+1 (high byte), as an unsigned 16-bit number.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$CE $10",
+    "details": "Banks 0 – 127 give access to RAM or ROM banks."
+  },
+  "WPOKE": {
+    "syntax": "WPOKE address, word [, word ...]",
+    "summary": "Writes one or more 16-bit words into memory or memory mapped I/O, starting at address.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$FE $1D",
+    "details": "The address is increased by two for each data word, so a memory range can be written to with a single WPOKE."
+  },
+  "XOR": {
+    "syntax": "operand XOR operand",
+    "summary": "Performs a bit-wise logical Exclusive OR operation on two 16-bit values.",
+    "reference": "MEGA65 BASIC 65 Reference (2026 edition)",
+    "token": "$E9",
+    "details": "The result is of type integer."
+  }
+}

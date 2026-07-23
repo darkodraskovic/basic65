@@ -1,0 +1,52 @@
+{
+  "DO loop": {
+    "prefix": "do-loop",
+    "body": [
+      "do",
+      "  $0",
+      "loop"
+    ],
+    "description": "BASIC 65 DO/LOOP block"
+  },
+  "DO UNTIL loop": {
+    "prefix": "do-until",
+    "body": [
+      "do",
+      "  $0",
+      "loop until ${1:condition}"
+    ],
+    "description": "BASIC 65 DO/LOOP UNTIL block"
+  },
+  "IF block": {
+    "prefix": "if-begin",
+    "body": [
+      "if ${1:condition} then begin",
+      "  $0",
+      "bend"
+    ],
+    "description": "BASIC 65 structured IF block"
+  },
+  "Screen cell": {
+    "prefix": "screen-cell",
+    "body": [
+      "t@&(${1:column},${2:row})=${3:screen_code}",
+      "c@&(${1:column},${2:row})=${4:colour}"
+    ],
+    "description": "Set a text screen code and colour"
+  },
+  "VIC-IV I/O": {
+    "prefix": "vic-io",
+    "body": [
+      "bank 128",
+      "${1:value}=peek(\\$${2:d000})"
+    ],
+    "description": "Select system I/O mapping and read a register"
+  },
+  "Custom glyph": {
+    "prefix": "chardef",
+    "body": [
+      "chardef ${1:1}, %${2:00000000}, %${3:00000000}, %${4:00000000}, %${5:00000000}, %${6:00000000}, %${7:00000000}, %${8:00000000}, %${9:00000000}"
+    ],
+    "description": "Define an 8x8 character glyph"
+  }
+}

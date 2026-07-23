@@ -1,5 +1,44 @@
-.venv
+# Build output
+/build/
 
+# Compiled MEGA65/Commodore programs and media
+*.prg
+*.d64
+*.d71
+*.d81
+*.dnp
+*.crt
+
+# Assembler and linker output
+*.lst
+*.map
+*.sym
+*.lbl
+
+# Python
+/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors
+/.idea/
+/.vscode/*
+!/.vscode/extensions.json
+*.swp
+*.swo
+*~
+.#*
+\#*\#
+
+# Operating systems
 .DS_Store
+Thumbs.db
+Desktop.ini
 
-build/
+# Logs and temporary files
+*.log
+*.tmp
+*.bak

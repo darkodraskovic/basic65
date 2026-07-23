@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MEGA65 BASIC 65",
+  "scopeName": "source.basic65",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#system-arrays"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#control-flow"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#commands"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.rem.basic65",
+          "begin": "(?i:\\bREM\\b)",
+          "beginCaptures": {
+            "0": {
+              "name": "keyword.control.rem.basic65"
+            }
+          },
+          "end": "$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.basic65",
+          "begin": "\"",
+          "end": "\""
+        }
+      ]
+    },
+    "system-arrays": {
+      "patterns": [
+        {
+          "name": "support.variable.system.basic65",
+          "match": "(?i:\\b[TC]@&(?=\\s*\\())"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.basic65",
+          "match": "(?i:\\$[0-9A-F]+\\b)"
+        },
+        {
+          "name": "constant.numeric.binary.basic65",
+          "match": "%[01]+\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.basic65",
+          "match": "(?i:(?<![A-Z0-9_])(?:\\d+\\.\\d*|\\.\\d+|\\d+)(?:E[+-]?\\d+)?\\b)"
+        }
+      ]
+    },
+    "control-flow": {
+      "patterns": [
+        {
+          "name": "keyword.control.basic65",
+          "match": "(?i:\\b(?:BEGIN|BEND|CONT|DATA|DEF|DIM|DO|ELSE|END|EXIT|FGOSUB|FGOTO|FN|FOR|GOSUB|GOTO|IF|LET|LOOP|NEXT|ON|READ|REM|RESTORE|RESUME|RETURN|STEP|STOP|THEN|TO|TRAP|UNTIL|WHILE)\\b)"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "support.function.basic65",
+          "match": "(?i:\\b(?:ABS|ASC|ATN|BUMP|CHR\\$|COLLISION|COS|DEC|DECBIN|ERR\\$|EXP|FRE|HEX\\$|INSTR|INT|JOY|LEFT\\$|LEN|LOG|LOG10|LPEN|MID\\$|MOD|PEEK|PIXEL|POINTER|POS|POT|RCOLOR|RCURSOR|RGRAPHIC|RIGHT\\$|RMOUSE|RND|RPALETTE|RPEN|RPLAY|RREG|RSPCOLOR|RSPPOS|RSPRITE|RSPEED|RWINDOW|SGN|SIN|SPC|SQR|STR\\$|STRBIN\\$|TAB|TAN|USR|VAL|WPEEK)\\b)"
+        }
+      ]
+    },
+    "commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.command.basic65",
+          "match": "(?i:\\b(?:AC\\s+COLLISION|APPEND|AUTO|BACKGROUND|BACKUP|BANK|BLOAD|BOOT|BORDER|BOX|BSAVE|BVERIFY|CATALOG|CHANGE|CHAR|CHARDEF|CHDIR|CIRCLE|CLEAR|CLOSE|CLR|CMD|COLLECT|COLOR|CONCAT|COPY|CURSOR|CUT|DCLEAR|DCLOSE|DELETE|DIR|DISK|DLOAD|DMA|DMODE|DOPEN|DOT|DPAT|DSAVE|DVERIFY|ECTORY|EDIT|EDMA|ELLIPSE|ENVELOPE|ERASE|FAST|FILTER|FIND|FONT|FOREGROUND|FORMAT|FREAD|FREEZER|FWRITE|GCOPY|GET|GETKEY|GO|GRAPHIC|HEADER|HELP|HIGHLIGHT|IMPORT|INFO|INPUT|KEY|LINE|LIST|LOAD|LOADIFF|LOCK|MEM|MERGE|MKDIR|MONITOR|MOUNT|MOUSE|MOVSPR|NEW|OFF|OPEN|PAINT|PALETTE|PASTE|PEN|PLAY|POKE|POLYGON|PRINT|RECORD|RENAME|RENUMBER|RUN|SAVE|SAVEIFF|SCNCLR|SCRATCH|SCREEN|SET|SLEEP|SOUND|SPEED|SPRCOLOR|SPRITE|SPRITECLR|SPRSAV|SYS|TEMPO|TROFF|TRON|TYPE|UNLOCK|USING|VERIFY|VIEWPORT|VOL|VSYNC|WAIT|WINDOW|WPOKE)\\b#?)"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.basic65",
+          "match": "(?i:\\b(?:AND|NOT|OR|XOR)\\b)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.basic65",
+          "match": "<<|>>|<>|<=|>=|[+\\-*/^=<>]"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.basic65",
+          "match": "(?i:\\b[A-Z][A-Z0-9]*[$%&]?)"
+        }
+      ]
+    }
+  }
+}

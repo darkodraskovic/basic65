@@ -1,0 +1,53 @@
+{
+  "name": "basic65",
+  "displayName": "MEGA65 BASIC 65",
+  "description": "Language support for MEGA65 BASIC 65.",
+  "version": "0.3.0",
+  "publisher": "local",
+  "license": "MIT",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:basic65"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "mega65",
+    "basic65",
+    "commodore",
+    "basic"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "basic65",
+        "aliases": [
+          "BASIC 65",
+          "MEGA65 BASIC"
+        ],
+        "extensions": [
+          ".bas"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "basic65",
+        "scopeName": "source.basic65",
+        "path": "./syntaxes/basic65.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "basic65",
+        "path": "./snippets/basic65.json"
+      }
+    ]
+  }
+}

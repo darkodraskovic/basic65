@@ -2,6 +2,11 @@
 
 const vscode = require("vscode");
 const referenceDocs = require("./docs/basic65-reference.json");
+const addressDocs = require("./docs/mega65-addresses.json").map((entry) => ({
+  ...entry,
+  startValue: Number.parseInt(entry.start, 16),
+  endValue: Number.parseInt(entry.end || entry.start, 16)
+}));
 
 const curatedDocs = {
   "T@&": {
@@ -170,6 +175,38 @@ function findHoverTarget(document, position) {
   return undefined;
 }
 
+function findAddressEntry(address) {
+  let lookupAddress = address;
+  let ioAlias;
+
+  if (address >= 0xFFD3000 && address <= 0xFFD3FFF) {
+    ioAlias = 0xD000 + (address - 0xFFD3000);
+    lookupAddress = ioAlias;
+  }
+
+  const matches = addressDocs
+    .filter(
+      (entry) =>
+        lookupAddress >= entry.startValue && lookupAddress <= entry.endValue
+    )
+    .sort(
+      (left, right) =>
+        left.endValue -
+        left.startValue -
+        (right.endValue - right.startValue)
+    );
+
+  return {
+    entry: matches[0],
+    ioAlias,
+    lookupAddress
+  };
+}
+
+function hex(value, width = 4) {
+  return value.toString(16).toUpperCase().padStart(width, "0");
+}
+
 function activate(context) {
   const selector = { language: "basic65" };
 
@@ -198,7 +235,123 @@ function activate(context) {
     }
   });
 
-  context.subscriptions.push(provider);
+  const addressProvider = vscode.languages.registerHoverProvider(selector, {
+    provideHover(document, position) {
+      const range = document.getWordRangeAtPosition(
+        position,
+        /\$[0-9A-Fa-f]+/
+      );
+      if (!range) {
+        return undefined;
+      }
+
+      const literal = document.getText(range);
+      const address = Number.parseInt(literal.slice(1), 16);
+      const result = findAddressEntry(address);
+      if (!result.entry) {
+        return undefined;
+      }
+
+      const entry = result.entry;
+      const markdown = new vscode.MarkdownString();
+      markdown.appendMarkdown(
+        `**${literal.toUpperCase()} — ${entry.name}**\n\n${entry.description}`
+      );
+
+      if (entry.startValue !== entry.endValue) {
+        markdown.appendMarkdown(
+          `\n\nDocumented range: \`$${hex(
+            entry.startValue,
+            entry.start.length
+          )}–$${hex(entry.endValue, (entry.end || entry.start).length)}\``
+        );
+      }
+
+      if (result.ioAlias !== undefined) {
+        markdown.appendMarkdown(
+          `\n\nMEGA65 I/O-window alias: \`$${hex(result.ioAlias)}\``
+        );
+      }
+
+      if (address >= 0xD000 && address <= 0xDFFF) {
+        const absoluteIo = 0xFFD3000 + (address - 0xD000);
+        markdown.appendMarkdown(
+          `\n\nNormal MEGA65 I/O absolute address: \`$${hex(
+            absoluteIo,
+            7
+          )}\``
+        );
+      }
+
+      if (address >= 0x1F800 && address <= 0x1FFFF) {
+        const colourOffset = address - 0x1F800;
+        const physicalColour = 0xFF80000 + colourOffset;
+        markdown.appendMarkdown(
+          `\n\nUnderlying colour RAM address: \`$${hex(
+            physicalColour,
+            7
+          )}\``
+        );
+        if (colourOffset < 0x400) {
+          markdown.appendMarkdown(
+            `\n\nLegacy I/O alias: \`$${hex(0xD800 + colourOffset)}\``
+          );
+        } else {
+          markdown.appendMarkdown(
+            `\n\nWith CRAM2K enabled, I/O alias: \`$${hex(
+              0xD800 + colourOffset
+            )}\``
+          );
+        }
+      }
+
+      if (address >= 0xD800 && address <= 0xDFFF) {
+        const colourOffset = address - 0xD800;
+        if (colourOffset < 0x400 || address >= 0xDC00) {
+          const physicalColour = 0xFF80000 + colourOffset;
+          const condition = colourOffset < 0x400 ? "" : " with CRAM2K enabled";
+          markdown.appendMarkdown(
+            `\n\nColour RAM target${condition}: \`$${hex(
+              physicalColour,
+              7
+            )}\``
+          );
+        }
+      }
+
+      if (address >= 0xFF80000 && address <= 0xFF807FF) {
+        const colourOffset = address - 0xFF80000;
+        markdown.appendMarkdown(
+          `\n\nFlat compatibility alias: \`$${hex(
+            0x1F800 + colourOffset,
+            5
+          )}\``
+        );
+        const condition = colourOffset < 0x400 ? "" : " with CRAM2K enabled";
+        markdown.appendMarkdown(
+          `\n\nColour RAM I/O alias${condition}: \`$${hex(
+            0xD800 + colourOffset
+          )}\``
+        );
+      }
+
+      if (
+        result.lookupAddress >= 0xD100 &&
+        result.lookupAddress <= 0xD3FF
+      ) {
+        markdown.appendMarkdown(
+          `\n\nPalette entry: \`${result.lookupAddress & 0xFF}\``
+        );
+      }
+
+      markdown.appendMarkdown(
+        `\n\nDecimal address: \`${address}\`\n\n*MEGA65 Chipset Reference (2026 edition)*`
+      );
+      return new vscode.Hover(markdown, range);
+    }
+  });
+
+  context.subscriptions.push(provider, addressProvider);
 }
 
 function deactivate() {}

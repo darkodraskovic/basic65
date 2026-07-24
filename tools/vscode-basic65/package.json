@@ -2,7 +2,7 @@
   "name": "basic65",
   "displayName": "MEGA65 BASIC 65",
   "description": "Language support for MEGA65 BASIC 65.",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "publisher": "local",
   "license": "MIT",
   "main": "./extension.js",

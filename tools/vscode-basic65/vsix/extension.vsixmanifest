@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0"
   xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
   <Metadata>
-    <Identity Language="en-US" Id="basic65" Version="0.3.0" Publisher="local" />
+    <Identity Language="en-US" Id="basic65" Version="0.4.1" Publisher="local" />
     <DisplayName>MEGA65 BASIC 65</DisplayName>
     <Description xml:space="preserve">Language support for MEGA65 BASIC 65.</Description>
     <Tags>mega65,basic65,commodore,basic</Tags>

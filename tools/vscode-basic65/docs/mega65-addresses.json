@@ -1,0 +1,221 @@
+[
+  {
+    "start": "0000000",
+    "end": "005FFFF",
+    "name": "Fast chip RAM",
+    "description": "The MEGA65's 384 KB fast chip RAM. The VIC-IV and other chipset devices can use this memory directly."
+  },
+  {
+    "start": "001F800",
+    "end": "001FFFF",
+    "name": "C65 colour RAM compatibility alias",
+    "description": "A flat-address alias for the first 2 KB of the VIC-IV's dedicated colour RAM."
+  },
+  {
+    "start": "8000000",
+    "end": "87FFFFF",
+    "name": "Attic RAM",
+    "description": "Eight MB of expansion RAM. It is slower than chip RAM and is not directly visible to VIC-IV, SID, or audio DMA."
+  },
+  {
+    "start": "FF7E000",
+    "end": "FF7EFFF",
+    "name": "VIC-IV character-set buffer",
+    "description": "The 4 KB VIC character ROM/buffer region used by BASIC 65 FONT and CHARDEF."
+  },
+  {
+    "start": "FF80000",
+    "end": "FF87FFF",
+    "name": "VIC-IV colour RAM",
+    "description": "The complete 32 KB dedicated colour/attribute RAM. COLPTR selects an offset within this fixed physical region."
+  },
+  {
+    "start": "FFD3000",
+    "end": "FFD3FFF",
+    "name": "MEGA65 normal I/O personality",
+    "description": "The absolute 28-bit representation of the MEGA65 $D000–$DFFF memory-mapped I/O window."
+  },
+  {
+    "start": "D000",
+    "end": "D02E",
+    "name": "VIC-II compatible registers",
+    "description": "The VIC-II-compatible portion of the VIC-IV register set. Its interpretation depends on the active I/O personality."
+  },
+  {
+    "start": "D011",
+    "name": "VIC display control register 1",
+    "description": "Legacy VIC display-control bits including raster bit 8, extended colour mode, bitmap mode, display enable, row selection, and vertical scroll."
+  },
+  {
+    "start": "D015",
+    "name": "Sprite enable register",
+    "description": "Each bit enables the corresponding hardware sprite."
+  },
+  {
+    "start": "D016",
+    "name": "VIC display control register 2",
+    "description": "Legacy VIC horizontal-control bits including multicolour mode, column selection, and horizontal scroll."
+  },
+  {
+    "start": "D018",
+    "name": "Legacy video-memory pointer",
+    "description": "VIC-II-compatible screen and character pointer fields. With HOTREG enabled, writing this also updates related VIC-IV pointer registers."
+  },
+  {
+    "start": "D020",
+    "name": "Border colour",
+    "description": "The VIC border palette index. BASIC 65 exposes this through BORDER."
+  },
+  {
+    "start": "D021",
+    "name": "Background colour 0",
+    "description": "The primary VIC background palette index. BASIC 65 exposes this through BACKGROUND."
+  },
+  {
+    "start": "D025",
+    "name": "Sprite multicolour 0",
+    "description": "The first shared sprite multicolour palette index."
+  },
+  {
+    "start": "D026",
+    "name": "Sprite multicolour 1",
+    "description": "The second shared sprite multicolour palette index."
+  },
+  {
+    "start": "D02F",
+    "name": "KEY: I/O personality selector",
+    "description": "Receives two-byte unlock sequences that select C64, C65, Ethernet, or normal MEGA65 I/O visibility."
+  },
+  {
+    "start": "D030",
+    "name": "C65 memory and colour-RAM control",
+    "description": "Contains C65 banking controls and CRAM2K, which can extend the legacy colour-RAM I/O window through $DFFF."
+  },
+  {
+    "start": "D031",
+    "name": "VIC-III mode register",
+    "description": "Controls VIC-III-compatible modes including 80 columns, fast mode, text attributes, bitplanes, and 400-line display."
+  },
+  {
+    "start": "D048",
+    "end": "D04F",
+    "name": "VIC-IV border and text-position registers",
+    "description": "Fine position and border controls, including TEXTXPOS and TEXTYPOS."
+  },
+  {
+    "start": "D054",
+    "name": "VIC-IV mode register",
+    "description": "Controls advanced VIC-IV features including alpha, fast mode, palette emulation, full-colour modes, and 16-bit character cells."
+  },
+  {
+    "start": "D055",
+    "name": "Sprite-height enable",
+    "description": "Each bit selects programmable height for the corresponding sprite."
+  },
+  {
+    "start": "D056",
+    "name": "Programmable sprite height",
+    "description": "Shared height used by sprites enabled through $D055."
+  },
+  {
+    "start": "D057",
+    "name": "64-pixel sprite-width enable",
+    "description": "Each bit selects extended width for the corresponding sprite."
+  },
+  {
+    "start": "D058",
+    "end": "D059",
+    "name": "LINESTEP",
+    "description": "A 16-bit little-endian value giving the number of screen and colour RAM bytes between consecutive text rows."
+  },
+  {
+    "start": "D05A",
+    "name": "CHRXSCL",
+    "description": "Horizontal hardware scaling for text character pixels."
+  },
+  {
+    "start": "D05B",
+    "name": "CHRYSCL",
+    "description": "Vertical hardware scaling for text character pixels."
+  },
+  {
+    "start": "D05D",
+    "name": "HOTREG and side-border width",
+    "description": "Bit 7 controls propagation from legacy hot registers into VIC-IV registers; the remaining fields contribute to border configuration."
+  },
+  {
+    "start": "D05E",
+    "name": "Display row width",
+    "description": "Low bits of the number of character cells displayed per row; high bits are held in $D063."
+  },
+  {
+    "start": "D060",
+    "end": "D063",
+    "name": "SCRNPTR",
+    "description": "The VIC-IV screen-memory base pointer. $D060 is the low byte, $D061 the middle byte, and $D062 the bank byte; $D063 contains additional pointer and display-width fields."
+  },
+  {
+    "start": "D064",
+    "end": "D065",
+    "name": "COLPTR",
+    "description": "A 16-bit little-endian offset selecting the active base within the VIC-IV's dedicated colour RAM."
+  },
+  {
+    "start": "D068",
+    "end": "D06A",
+    "name": "CHARPTR",
+    "description": "The 24-bit little-endian base address from which VIC-IV fetches character glyph data."
+  },
+  {
+    "start": "D06B",
+    "name": "SPR16EN",
+    "description": "Enables full-colour mode independently for each hardware sprite."
+  },
+  {
+    "start": "D06C",
+    "end": "D06E",
+    "name": "SPRPTRADR",
+    "description": "The VIC-IV sprite-pointer-table address, with the high register also containing the 16-bit sprite-pointer mode flag."
+  },
+  {
+    "start": "D070",
+    "name": "Palette-bank selection",
+    "description": "Selects the palette bank mapped for CPU access, the bitmap/text palette, the sprite palette, and the alternate bitmap/text palette."
+  },
+  {
+    "start": "D100",
+    "end": "D1FF",
+    "name": "Mapped palette red components",
+    "description": "The 256 red-component registers of the palette bank selected by MAPEDPAL in $D070."
+  },
+  {
+    "start": "D200",
+    "end": "D2FF",
+    "name": "Mapped palette green components",
+    "description": "The 256 green-component registers of the palette bank selected by MAPEDPAL in $D070."
+  },
+  {
+    "start": "D300",
+    "end": "D3FF",
+    "name": "Mapped palette blue components",
+    "description": "The 256 blue-component registers of the palette bank selected by MAPEDPAL in $D070."
+  },
+  {
+    "start": "D400",
+    "end": "D7FF",
+    "name": "SID audio register area",
+    "description": "Memory-mapped register windows for the MEGA65's SID audio chips and their mirrors."
+  },
+  {
+    "start": "D800",
+    "end": "DBFF",
+    "name": "Legacy colour RAM I/O window",
+    "description": "A C64-compatible 1 KB window onto the beginning of dedicated VIC colour RAM."
+  },
+  {
+    "start": "DC00",
+    "end": "DFFF",
+    "name": "Extended I/O / optional colour RAM window",
+    "description": "Normally contains CIA and cartridge I/O regions. With CRAM2K enabled, part of this area extends the colour-RAM window to 2 KB."
+  }
+]

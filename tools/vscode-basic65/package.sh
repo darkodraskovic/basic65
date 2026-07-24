@@ -5,7 +5,7 @@ set -euo pipefail
 ROOT_DIR=$(cd "$(dirname "$0")" && pwd)
 PROJECT_DIR=$(cd "$ROOT_DIR/../.." && pwd)
 STAGE_DIR=$(mktemp -d)
-OUTPUT="$PROJECT_DIR/build/basic65-0.3.0.vsix"
+OUTPUT="$PROJECT_DIR/build/basic65-0.4.1.vsix"
 
 trap 'rm -rf "$STAGE_DIR"' EXIT
 
@@ -20,6 +20,7 @@ cp "$ROOT_DIR/extension.js" "$STAGE_DIR/extension/"
 cp "$ROOT_DIR/language-configuration.json" "$STAGE_DIR/extension/"
 cp "$ROOT_DIR/README.md" "$STAGE_DIR/extension/"
 cp "$ROOT_DIR/docs/basic65-reference.json" "$STAGE_DIR/extension/docs/"
+cp "$ROOT_DIR/docs/mega65-addresses.json" "$STAGE_DIR/extension/docs/"
 cp "$ROOT_DIR/syntaxes/basic65.tmLanguage.json" "$STAGE_DIR/extension/syntaxes/"
 cp "$ROOT_DIR/snippets/basic65.json" "$STAGE_DIR/extension/snippets/"
 

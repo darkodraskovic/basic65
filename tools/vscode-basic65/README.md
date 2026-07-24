@@ -11,6 +11,7 @@ Repository-local language support for BASIC 65 source files.
 - `REM` comments and BASIC string handling
 - Snippets for structured control flow, screen cells, VIC-IV I/O, and `CHARDEF`
 - Hover documentation for core BASIC 65, memory, text, and VIC-IV commands
+- Address hovers for documented MEGA65 memory ranges and VIC registers
 
 The keyword list is based on the *MEGA65 BASIC 65 Reference*, edition dated
 February 2, 2026.
@@ -37,7 +38,7 @@ From the repository root:
 
 ```sh
 ./tools/vscode-basic65/package.sh
-code --install-extension build/basic65-0.3.0.vsix
+code --install-extension build/basic65-0.4.1.vsix
 ```
 
 This extension provides editing support only. Project build and Xemu launch commands

@@ -1,0 +1,64 @@
+rem lesson 005: the mega65 28-bit address space
+rem physical addresses can select ram, devices, or compatibility views
+
+scnclr
+bank 128 : rem bank affects 16-bit accesses; flat addresses ignore it
+
+print "lesson 005: the 28-bit address space"
+print
+print "$0000000-$005ffff  384kb fast chip ram"
+print "$020000-$03ffff  rom image in protected ram"
+print "$0060000-$0ffffff  reserved chip-ram expansion"
+print "$4000000-$7ffffff  cartridge and slow devices"
+print "$8000000-$87fffff  8mb attic ram"
+print "$ff7e000-$ff7efff  vic character buffer"
+print "$ff80000-$ff87fff  32kb colour ram"
+print "$ffd0000-$ffd3fff  four io personalities"
+print
+
+rem split one flat address into its 64kb bank number and 16-bit offset
+ad=$51000 : rem safe demonstration byte in standard bank 5 chip ram
+bn=int(ad/65536) : rem whole 64kb blocks before ad give the bank number
+of=mod(ad,65536) : rem remainder after 64kb blocks gives the offset in that bank
+
+print "flat address: $";hex$(ad)
+print "64kb bank:";bn
+print "bank offset: $";hex$(of)
+print
+
+rem first access the byte through its complete flat address
+ov&=peek(ad) : rem preserve the original byte before the experiment
+poke ad,$5a : rem write test pattern %01011010
+nv&=peek(ad)
+
+print "flat write $5a, read $";hex$(nv&)
+print "bank 128 was ignored because ad > $ffff"
+print
+
+rem bank 5 makes the 16-bit offset $1000 refer to flat address $51000
+bank bn : rem select the 64kb bank calculated from the flat address
+br&=peek(of) : rem read the same byte using only its offset inside bank 5
+poke of,$a5 : rem write test pattern %10100101 through the banked view
+bw&=peek(of)
+bank 128 : rem restore basic's normal rom and io memory mapping
+
+fr&=peek(ad) : rem flat access now sees the value written through bank 5
+
+print "banked read of $5a: $";hex$(br&)
+print "banked write $a5:   $";hex$(bw&)
+print "flat read afterward: $";hex$(fr&)
+
+rem restore through the banked view, then verify through the flat view
+bank bn
+poke of,ov& : rem restore the byte at bank 5 offset $1000
+bank 128 : rem leave basic in its normal mapped configuration
+rr&=peek(ad)
+
+print "restored original:   $";hex$(rr&)
+
+print
+print "press a key to finish"
+getkey a$
+
+scnclr
+end

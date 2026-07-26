@@ -12,6 +12,19 @@ Repository-local language support for BASIC 65 source files.
 - Snippets for structured control flow, screen cells, VIC-IV I/O, and `CHARDEF`
 - Hover documentation for core BASIC 65, memory, text, and VIC-IV commands
 - Address hovers for documented MEGA65 memory ranges and VIC registers
+- Document-local variable references, definitions, and BASIC-aware rename
+
+## Symbol navigation
+
+- `F2`: rename a variable throughout the current document
+- `F12`: go to its `DIM`, first assignment, or first occurrence
+- `F12` on that definition: no action
+- `Shift+F2`: show the reference picker directly
+- `Shift+F12`: open VS Code's native Find References view
+
+Variable matching follows BASIC 65 semantics: names are case-insensitive, only the
+first two letters are significant, type suffixes are distinct, and arrays have a separate
+namespace from scalar variables.
 
 The keyword list is based on the *MEGA65 BASIC 65 Reference*, edition dated
 February 2, 2026.
@@ -38,7 +51,7 @@ From the repository root:
 
 ```sh
 ./tools/vscode-basic65/package.sh
-code --install-extension build/basic65-0.4.1.vsix
+code --install-extension build/basic65-0.5.2.vsix
 ```
 
 This extension provides editing support only. Project build and Xemu launch commands

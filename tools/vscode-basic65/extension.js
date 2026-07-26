@@ -2,6 +2,7 @@
 
 const vscode = require("vscode");
 const referenceDocs = require("./docs/basic65-reference.json");
+const symbols = require("./basic65-symbols");
 const addressDocs = require("./docs/mega65-addresses.json").map((entry) => ({
   ...entry,
   startValue: Number.parseInt(entry.start, 16),
@@ -145,6 +146,7 @@ for (const [key, entry] of Object.entries(curatedDocs)) {
 }
 
 const docKeys = Object.keys(docs).sort((left, right) => right.length - left.length);
+const basicKeywords = symbols.buildKeywordSet(Object.keys(referenceDocs));
 
 function escapeRegex(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -205,6 +207,73 @@ function findAddressEntry(address) {
 
 function hex(value, width = 4) {
   return value.toString(16).toUpperCase().padStart(width, "0");
+}
+
+function symbolContext(document, position) {
+  const occurrences = symbols.analyze(document.getText(), basicKeywords);
+  const occurrence = symbols.occurrenceAt(
+    occurrences,
+    document.offsetAt(position)
+  );
+  return {
+    occurrences,
+    occurrence
+  };
+}
+
+function occurrenceRange(document, occurrence) {
+  return new vscode.Range(
+    document.positionAt(occurrence.start),
+    document.positionAt(occurrence.end)
+  );
+}
+
+function occurrenceLocation(document, occurrence) {
+  return new vscode.Location(
+    document.uri,
+    occurrenceRange(document, occurrence)
+  );
+}
+
+async function showReferences(editor, analysis) {
+  if (!analysis.occurrence) {
+    return;
+  }
+
+  const definition = symbols.definitionFor(
+    analysis.occurrences,
+    analysis.occurrence
+  );
+  const references = symbols.occurrencesFor(
+    analysis.occurrences,
+    analysis.occurrence
+  );
+  const items = references.map((occurrence) => ({
+    label: `Line ${occurrence.line + 1}: ${occurrence.raw}`,
+    description:
+      occurrence.start === definition.start ? "definition" : "reference",
+    detail: editor.document.lineAt(occurrence.line).text.trim(),
+    occurrence
+  }));
+
+  const selected = await vscode.window.showQuickPick(items, {
+    title: `References to ${analysis.occurrence.raw}`,
+    placeHolder: `${references.length} reference${
+      references.length === 1 ? "" : "s"
+    } in this document`,
+    matchOnDescription: true,
+    matchOnDetail: true
+  });
+  if (!selected) {
+    return;
+  }
+
+  const target = editor.document.positionAt(selected.occurrence.start);
+  editor.selection = new vscode.Selection(target, target);
+  editor.revealRange(
+    occurrenceRange(editor.document, selected.occurrence),
+    vscode.TextEditorRevealType.InCenterIfOutsideViewport
+  );
 }
 
 function activate(context) {
@@ -351,7 +420,135 @@ function activate(context) {
     }
   });
 
-  context.subscriptions.push(provider, addressProvider);
+  const referenceProvider = vscode.languages.registerReferenceProvider(selector, {
+    provideReferences(document, position, options) {
+      const analysis = symbolContext(document, position);
+      if (!analysis.occurrence) {
+        return [];
+      }
+
+      const definition = symbols.definitionFor(
+        analysis.occurrences,
+        analysis.occurrence
+      );
+      return symbols
+        .occurrencesFor(analysis.occurrences, analysis.occurrence)
+        .filter(
+          (occurrence) =>
+            options.includeDeclaration || occurrence.start !== definition.start
+        )
+        .map((occurrence) => occurrenceLocation(document, occurrence));
+    }
+  });
+
+  const definitionProvider = vscode.languages.registerDefinitionProvider(selector, {
+    provideDefinition(document, position) {
+      const analysis = symbolContext(document, position);
+      if (!analysis.occurrence) {
+        return undefined;
+      }
+      const definition = symbols.definitionFor(
+        analysis.occurrences,
+        analysis.occurrence
+      );
+      return occurrenceLocation(document, definition);
+    }
+  });
+
+  const renameProvider = vscode.languages.registerRenameProvider(selector, {
+    prepareRename(document, position) {
+      const analysis = symbolContext(document, position);
+      if (!analysis.occurrence) {
+        throw new Error("Place the cursor on a BASIC 65 variable.");
+      }
+      return {
+        range: occurrenceRange(document, analysis.occurrence),
+        placeholder: analysis.occurrence.raw
+      };
+    },
+
+    provideRenameEdits(document, position, newName) {
+      const analysis = symbolContext(document, position);
+      if (!analysis.occurrence) {
+        throw new Error("Place the cursor on a BASIC 65 variable.");
+      }
+
+      const problem = symbols.validateNewName(
+        newName,
+        analysis.occurrence,
+        analysis.occurrences,
+        basicKeywords
+      );
+      if (problem) {
+        throw new Error(problem);
+      }
+
+      const edit = new vscode.WorkspaceEdit();
+      for (const occurrence of symbols.occurrencesFor(
+        analysis.occurrences,
+        analysis.occurrence
+      )) {
+        edit.replace(document.uri, occurrenceRange(document, occurrence), newName);
+      }
+      return edit;
+    }
+  });
+
+  const findReferences = vscode.commands.registerCommand(
+    "basic65.findReferences",
+    async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor || editor.document.languageId !== "basic65") {
+        return;
+      }
+      await showReferences(
+        editor,
+        symbolContext(editor.document, editor.selection.active)
+      );
+    }
+  );
+
+  const definitionOrReferences = vscode.commands.registerCommand(
+    "basic65.goToDefinitionOrReferences",
+    async () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor || editor.document.languageId !== "basic65") {
+        return;
+      }
+
+      const position = editor.selection.active;
+      const analysis = symbolContext(editor.document, position);
+      if (!analysis.occurrence) {
+        await vscode.commands.executeCommand("editor.action.revealDefinition");
+        return;
+      }
+
+      const definition = symbols.definitionFor(
+        analysis.occurrences,
+        analysis.occurrence
+      );
+      if (definition.start === analysis.occurrence.start) {
+        return;
+      }
+
+      const target = editor.document.positionAt(definition.start);
+      editor.selection = new vscode.Selection(target, target);
+      editor.revealRange(
+        occurrenceRange(editor.document, definition),
+        vscode.TextEditorRevealType.InCenterIfOutsideViewport
+      );
+    }
+  );
+
+  context.subscriptions.push(
+    provider,
+    addressProvider,
+    referenceProvider,
+    definitionProvider,
+    renameProvider,
+    findReferences,
+    definitionOrReferences
+  );
 }
 
 function deactivate() {}

@@ -2,7 +2,7 @@
   "name": "basic65",
   "displayName": "MEGA65 BASIC 65",
   "description": "Language support for MEGA65 BASIC 65.",
-  "version": "0.4.1",
+  "version": "0.5.2",
   "publisher": "local",
   "license": "MIT",
   "main": "./extension.js",
@@ -23,6 +23,28 @@
     "basic"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "basic65.goToDefinitionOrReferences",
+        "title": "BASIC 65: Go to Definition"
+      },
+      {
+        "command": "basic65.findReferences",
+        "title": "BASIC 65: Find All References in Document"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "basic65.goToDefinitionOrReferences",
+        "key": "f12",
+        "when": "editorTextFocus && editorLangId == basic65"
+      },
+      {
+        "command": "basic65.findReferences",
+        "key": "shift+f2",
+        "when": "editorTextFocus && editorLangId == basic65"
+      }
+    ],
     "languages": [
       {
         "id": "basic65",

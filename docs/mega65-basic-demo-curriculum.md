@@ -13,6 +13,13 @@ sound.
 Bitmap graphics are intentionally outside the scope of this curriculum. The focus is
 the MEGA65's text, character, sprite, memory, DMA, palette, and audio architecture.
 
+The MEGA65 is always the subject. C64 and C65 concepts are included only where the
+MEGA65 inherits a compatibility mechanism that helps explain its native operation,
+such as the 16-bit CPU view, I/O mappings, VIC register ancestry, or compatibility
+aliases. They are supporting context, not separate programming targets. Every such
+discussion should return to the corresponding MEGA65 address, feature, or practical
+use.
+
 ## Learning principles
 
 Each lesson should:
@@ -27,6 +34,8 @@ Each lesson should:
 8. Avoid unexplained magic values.
 9. Distinguish compatibility mappings from native physical addresses.
 10. Build knowledge that will be reused in the final demo.
+11. Introduce C64 or C65 behavior only to clarify a MEGA65 mechanism, then state
+    the native MEGA65 interpretation explicitly.
 
 Source files use a three-digit lesson prefix:
 
@@ -147,12 +156,15 @@ Topics:
 - The 45GS02's `$0000–$FFFF` CPU-visible window
 - `BANK`
 - Banked addresses versus flat addresses
-- C64, C65, and MEGA65 compatibility
+- Compatibility mappings only as background to the MEGA65's 16-bit view
+- The corresponding native MEGA65 flat addresses
 - Why `$D000–$DFFF` can expose RAM, ROM, or I/O
 - I/O personalities and `$D02F`
 
 Outcome: the reader understands why a 16-bit address does not always identify one
 physical location.
+
+Source: `projects/edu/006_cpu_view.bas`
 
 ## 007 — Bytes, words, and address arithmetic
 

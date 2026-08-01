@@ -21,7 +21,7 @@ sr&=peek($d020) : rem sr = saved ram byte at bank 0 offset $d020
 bank 128
 
 rem write the border register through the normal 16-bit io mapping
-poke $d020,$06 : rem bank 128 maps $d020 to mega65 io at $ffd3020
+poke $d020,$0d : rem bank 128 maps $d020 to mega65 io at $ffd3020
 fi&=peek($ffd3020) : rem fi = flat io value read from the full address
 
 rem change the mapping, then use the same 16-bit address as ordinary ram
@@ -45,8 +45,6 @@ print "same $d020, two physical destinations"
 rem restore both destinations using the mappings that reach each one
 bank 0
 poke $d020,sr& : rem restore the saved ram byte at flat address $0d020
-bank 128
-poke $d020,sb& : rem restore the saved border colour register
 
 print
 print "$d000-$dfff can be mapped to ram or io"
@@ -55,6 +53,9 @@ print "$d02f selects those io personalities"
 print
 print "press a key to finish"
 getkey ky$ : rem ky = key pressed to finish the lesson
+
+bank 128
+poke $d020,sb& : rem restore the saved border colour register
 
 scnclr
 end

@@ -180,6 +180,8 @@ Topics:
 
 Outcome: the reader can inspect and update simple memory structures safely.
 
+Source: `projects/edu/007_bytes_words.bas`
+
 ## 008 — Register bit manipulation
 
 Topics:

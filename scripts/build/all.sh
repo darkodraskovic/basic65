@@ -81,7 +81,7 @@ if [ "$(uname -s)" != "Linux" ]; then
   exit 1
 fi
 
-MEGA65_TOOLS="${MEGA65_TOOLS:-/home/darkod/dev/mega65/tools/m65tools/}"
+MEGA65_TOOLS="${MEGA65_TOOLS:-/home/darkod/dev/mega65/tools/m65tools-develo}"
 MEGA65_FTP="${MEGA65_FTP:-$MEGA65_TOOLS/mega65_ftp}"
 ETHERLOAD="${ETHERLOAD:-$MEGA65_TOOLS/etherload}"
 XEMU="${XEMU:-/home/darkod/Documents/xemu/build/bin/xmega65.native}"
